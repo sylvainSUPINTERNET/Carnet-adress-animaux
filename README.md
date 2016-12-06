@@ -1,6 +1,6 @@
 # Carnet de contact d'adresse d'animaux
 
-_*Symfony 3.1 / FOSUserBundle 2.0 (master)*_
+_*Symfony 3.1 / FOSUserBundle 2.0 (master)  /  MYSql  /  Doctrine*_
 
 
 **Topic**
@@ -21,6 +21,13 @@ Enter that command (at the root directory of the project)
 **Install data base**
 
 Import the .sql file (contact.sql)
+
+Go into app / config / paramters.yml.dist and remove the extension .dist
+
+
+Then open the file and change database_name by the name of the imported database 
+
+(Change password and username)
         
 **Run server (localhost)**
 
