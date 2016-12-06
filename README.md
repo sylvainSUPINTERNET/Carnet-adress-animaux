@@ -22,12 +22,10 @@ Enter that command (at the root directory of the project)
 
 Import the database : carnetadressanimal.sql
 
-Go into app / config / paramters.yml.dist and remove the extension .dist
-
 
 Then open the file and change database_name by the name of the imported database 
 
-(Change password and username)
+(Change password and username if it's necessary)
         
 **Run server (localhost)**
 
