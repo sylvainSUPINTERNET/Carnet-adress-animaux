@@ -45,6 +45,9 @@ Then open the file and change database_name by the name of the imported database
     
     
     password : user
+    
+    
+    allowed : Write / See contacts
 
 
 **Navigation as admin**
@@ -57,3 +60,5 @@ Then open the file and change database_name by the name of the imported database
     
     
     password : admin
+    
+    allowed : Write / Delete / Edit / See contacts
