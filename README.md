@@ -1,6 +1,6 @@
 # Carnet de contact d'adresse d'animaux
 
-_*Symfony 3.1 / FOSUserBundle 2.0 (master)  /  MYSql  /  Doctrine*_
+_*Symfony 3.1 / FOSUserBundle 2.0 (master)  /  mySql  /  Doctrine*_
 
 
 **Topic**
