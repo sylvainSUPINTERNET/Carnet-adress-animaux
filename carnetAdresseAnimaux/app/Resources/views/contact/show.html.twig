@@ -1,0 +1,57 @@
+        {% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 style="text-align: center;padding:15px;" xmlns="http://www.w3.org/1999/html">Contact</h1>
+
+    <table class="table table-striped">
+        <thead class="thead-default">
+        <tbody>
+        {% if is_granted('ROLE_ADMIN') %}
+            <tr>
+                <th>Id</th>
+                <td>{{ contact.id }}</td>
+            </tr>
+        {% endif %}
+            <tr>
+                <th>Email</th>
+                <td>{{ contact.email }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ contact.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Phonenumber</th>
+                <td>{{ contact.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>Siteweb</th>
+                <td>{{ contact.siteWeb }}</td>
+            </tr>
+            <tr>
+                <th>Type animal</th>
+                <td>{{ contact.typeAnimal }}</td>
+            </tr>
+        </tbody>
+        </thead>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('contact_index') }}">Back to the list</a>
+        </li>
+
+        {% if is_granted('ROLE_ADMIN') %}
+        <li>
+            <a href="{{ path('contact_edit', { 'id': contact.id }) }}">Edit</a>
+        </li>
+        {% endif %}
+        {% if is_granted('ROLE_ADMIN') %}
+        <li>
+            {{ form_start(delete_form) }}
+            <button type="submit" class="btn btn-warning">Delete</button>
+            {{ form_end(delete_form) }}
+        </li>
+        {% endif %}
+    </ul>
+{% endblock %}

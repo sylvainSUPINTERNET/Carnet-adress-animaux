@@ -1,0 +1,74 @@
+
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Carnet d'adresse d'animaux</title>
+    <h1 class="main-title">Carnet d'adresse d'animaux</h1>
+    <link rel="stylesheet" href="{{ asset('bundles/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/contact/css/style.css') }}">
+    <script src="{{ asset('bundles/bootstrap/js/bootstrap.min.js') }}"></script>
+</head>
+<body>
+<nav>
+    <ul class="nav nav-tabs">
+        {% if (is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')) %}
+            <li class="nav-tem">
+                <a href="{{ path('index') }}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('contact_index') }}">Voir tous les contacts</a>
+            </li>
+        {% else %}
+            <li class="nav-tem">
+                <a href="{{ path('index') }}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('fos_user_security_login') }}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('fos_user_registration_register') }}">Register</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('contact_index') }}">Voir tous les contacts</a>
+            </li>
+        {% endif %}
+
+
+    </ul>
+</nav>
+<h2 style="text-align: center;">Liste des {{ animal }}s</h2>
+<ul class="nav nav-tabs" style="margin-left: 20px;">
+    {% for data in contacts %}
+        <li>
+            Email :
+            {{ data.email }}
+        </li>
+        <br>
+        <li>
+            Phone number :
+            {{ data.phoneNumber }}
+        </li>
+        <br>
+        <li>
+            Web site :
+            {{ data.siteWeb }}
+        </li>
+        <br>
+        <a href="/contact/{{ data.id }}" class="btn btn-primary">Voir l'annonce</a>
+        <br>
+        <hr>
+        <br>
+    {% endfor %}
+
+</ul>
+{% if contacts is empty %}
+    <div class="alert alert-danger" style="text-align: center;">
+        <strong>Beware !</strong> No contacts find for that category !.
+    </div>
+{% endif %}
+</body>
+</html>

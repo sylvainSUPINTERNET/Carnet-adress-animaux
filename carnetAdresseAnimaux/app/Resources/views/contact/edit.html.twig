@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 style="text-align: center;">Contact edit</h1>
+
+    <style>
+        label {
+            display: block;
+            text-align: center;
+        }
+    </style>
+    <div id="formEdit" style="text-align: center;">
+        {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <button type="submit" class="btn btn-success" style="width:100px;">Edit</button>
+        {{ form_end(edit_form) }}
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('contact_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <button type="submit" class="btn btn-warning">Delete</button>
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

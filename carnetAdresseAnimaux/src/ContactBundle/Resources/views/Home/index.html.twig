@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Carnet d'adresse d'animaux</title>
+    <h1 class="main-title">Carnet d'adresse d'animaux</h1>
+    <link rel="stylesheet" href="{{ asset('bundles/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('bundles/contact/css/style.css') }}">
+    <script src="{{ asset('bundles/bootstrap/js/bootstrap.min.js') }}"></script>
+</head>
+<nav>
+    <ul class="nav nav-tabs">
+        {% if (is_granted('ROLE_ADMIN') or is_granted('ROLE_USER')) %}
+            <li class="nav-item">
+                <a href="{{ path('fos_user_security_logout') }}">Logout</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('contact_index') }}">Voir tous les contacts</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a href="{{ path('fos_user_security_login') }}">Login</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('fos_user_registration_register') }}">Register</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('contact_index') }}">Voir tous les contacts</a>
+            </li>
+        {% endif %}
+
+
+    </ul>
+</nav>
+<body>
+{% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+<h3 class="cat-title">Catégories</h3>
+
+<ul class="list-group" class="listCat">
+    <li class="list-group-item">
+        <span class="badge">{{ allChats }}</span>
+        <a href="/typeAnimal/chat">Chat</a>
+    </li>
+    <li class="list-group-item">
+        <span class="badge">{{ allChiens }}</span>
+        <a href="/typeAnimal/chien">Chien</a>
+    </li>
+    <li class="list-group-item">
+        <span class="badge">{{ allAutres }}</span>
+        <a href="/typeAnimal/autre">Autre</a>
+    </li>
+</ul>
+<br>
+{% if is_granted('ROLE_ADMIN') %}
+    <div class="alert alert-success" style="text-align: center;">
+        You are connected as <strong>admin</strong>
+    </div>
+{% elseif is_granted('ROLE_USER') %}
+    <div class="alert alert-success" style="text-align: center;">
+        You are connected as <strong>user</strong>
+    </div>
+{% endif %}
+{% else %}
+    <div class="jumbotron" style="text-align: center;">
+        <h1>Welcome to my project !</h1>
+            <div class="container-topic">
+            <blockquote cite="email">
+                <strong>L'objectif est de simuler un petit carnet d'adresses d'animaux en ligne sous symfony.</strong>
+                <br>
+                (Inscription/Connexion/Déconnexion) de l'utilisateur par login/mot de passe (FOSUserbundle).
+                <br>
+                (Ajouter/Lister/Supprimer) les contacts de son carnet d'adresses en fonction du type d'animal.
+                <br>
+                (Afficher/Modifier) leurs informations (e-mail / adresse / téléphone / site web).
+            </blockquote>
+            </div>
+    </div>
+    <div class="alert alert-warning" style="text-align: center;">
+        <strong>You must be connected to start !</strong>
+    </div>
+{% endif %}
+</body>
+</html>

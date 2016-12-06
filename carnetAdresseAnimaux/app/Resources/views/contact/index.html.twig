@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 style="text-align: center;padding:15px;">Contacts list</h1>
+    <table class="table table-striped">
+        <thead class="thead-default">
+            <tr>
+                {% if is_granted('ROLE_ADMIN') %}
+                <th>Id</th>
+                {% endif %}
+                <th>Email</th>
+                <th>Adresse</th>
+                <th>Téléphone</th>
+                <th>Site web</th>
+                <th>Type d'animal</th>
+                {% if is_granted('ROLE_ADMIN') %}
+                <th>Actions</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for contact in contacts %}
+            <tr>
+                {% if is_granted('ROLE_ADMIN') %}
+                <td><a href="{{ path('contact_show', { 'id': contact.id }) }}">{{ contact.id }}</a></td>
+                {% endif %}
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.adresse }}</td>
+                <td>{{ contact.phoneNumber }}</td>
+                <td>{{ contact.siteWeb }}</td>
+                <td>{{ contact.typeAnimal }}</td>
+                <td>
+                    <ul>
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li>
+                                <a href="{{ path('contact_show', { 'id': contact.id }) }}">show</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('contact_edit', { 'id': contact.id }) }}">edit</a>
+                            </li>
+                        {% else %}
+                            <!-- no action -->
+                        {% endif %}
+
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if is_granted('ROLE_USER') or is_granted('ROLE_ADMIN') %}
+    <ul>
+        <li>
+            <a class="btn btn-success" href="{{ path('contact_new') }}">Create a new contact</a>
+        </li>
+    </ul>
+{% endif %}
+{% endblock %}

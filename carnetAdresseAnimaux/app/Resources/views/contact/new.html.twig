@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1 style="text-align: center;">Contact creation</h1>
+    <style>
+        label
+        {
+            display: block;
+            text-align: center;
+        }
+
+    </style>
+    <div id="newForm" style="text-align: center;">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit" class="btn btn-success" style="width:100px; margin-left:2px;">Create</button>
+        {{ form_end(form) }}
+    </div>
+
+
+    <ul>
+        <li>
+            <a href="{{ path('contact_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}
