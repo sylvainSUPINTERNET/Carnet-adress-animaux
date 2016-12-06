@@ -20,7 +20,7 @@ Enter that command (at the root directory of the project)
         
 **Install data base**
 
-Import the .sql file (contact.sql)
+Import the database : carnetadressanimal.sql
 
 Go into app / config / paramters.yml.dist and remove the extension .dist
 
