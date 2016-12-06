@@ -40,12 +40,9 @@ Then open the file and change database_name by the name of the imported database
 
     route : /login 
     
-    
     username : user
     
-    
     password : user
-    
     
     allowed : Write / See contacts
 
@@ -55,9 +52,7 @@ Then open the file and change database_name by the name of the imported database
 
     route : /login 
     
-    
     username : admin
-    
     
     password : admin
     
