@@ -1,0 +1,33 @@
+.main-title {
+    text-align: center;
+    padding-bottom : 15px;
+}
+.cat-title{
+    padding: 5px;
+    text-align: left;
+}
+
+a {
+    font-size: 20px;
+}
+a:hover{
+    color: black;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:focus{
+    color: black;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+ .list-group-item:hover {
+    background : whitesmoke;
+     cursor: pointer;
+    transition: 0.4s;
+}
+
+ li {
+     list-style-type: none;
+ }
